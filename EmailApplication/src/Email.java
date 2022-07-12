@@ -10,7 +10,8 @@ public class Email {
     private String company;
     private String password;
     private String email;
-    private int mailboxCapacity;
+
+
 
     public Email(String firstName, String lastName){
 
@@ -19,7 +20,9 @@ public class Email {
         System.out.println(this.firstName + " " +this.lastName);
         this.department = setDepartment();
         this.password = randomPassword();
-
+        this.company = setCompany();
+        this.email = setEmail();
+        System.out.println(email);
     }
 
     public String setDepartment() {
@@ -27,15 +30,15 @@ public class Email {
         Scanner keyboard = new Scanner(System.in);
         switch (keyboard.nextInt()){
             case 1:
-                return "Sales";
+                return "sales";
 
 
             case 2:
-                return  "Accounting";
+                return  "accounting";
 
 
             case 3:
-                return  "Development";
+                return  "development";
 
 
             case 0:
@@ -43,7 +46,7 @@ public class Email {
 
         }
         System.out.println(department);
-        return "Error";
+        return "";
     }
 
     public String randomPassword(){
@@ -58,6 +61,17 @@ public class Email {
          }
         System.out.println(password);
         return new String(password);
+
+    }
+
+    public String setCompany(){
+        Scanner keyboard = new Scanner(System.in);
+        System.out.println("Enter the company that you are working: ");
+        return keyboard.nextLine().toLowerCase();
+    }
+
+    public String setEmail(){
+        return this.firstName + this.lastName + "@" + department + company + ".com";
 
     }
 }
